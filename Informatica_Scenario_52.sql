@@ -1,6 +1,6 @@
--- Sending records to target tables in cyclic order of 6
+-- Generate sequence numbers using Un-Connected Lookup Transformation
 
-CREATE TABLE gudiseva.dbo.SCNR_5_SRC (
+CREATE TABLE gudiseva.dbo.SCNR_52_SRC (
     EmpNo INT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
@@ -13,7 +13,7 @@ CREATE TABLE gudiseva.dbo.SCNR_5_SRC (
 );
 
 -- Insert data into Employees table
-INSERT INTO gudiseva.dbo.SCNR_5_SRC
+INSERT INTO gudiseva.dbo.SCNR_52_SRC
 (EmpNo, FirstName, LastName, DateOfBirth, Gender, DepartmentID, Salary, HireDate, DeptNo)
 VALUES
 (101, 'John', 'Smith', '1980-05-15', 'Male', 3, 60000.00, '2020-01-15', 50),
@@ -35,9 +35,10 @@ VALUES
 (103, 'Matthew', 'Parker', '1986-06-08', 'Male', 6, 66000.00, '2022-02-20', 10),
 (104, 'Ava', 'Williams', '1993-03-15', 'Female', 2, 57000.00, '2021-04-10', 50);
 
-SELECT * FROM gudiseva.dbo.SCNR_5_SRC;
+SELECT * FROM gudiseva.dbo.SCNR_52_SRC;
 
-CREATE TABLE gudiseva.dbo.SCNR_5_TGT_1 (
+
+CREATE TABLE gudiseva.dbo.SCNR_52_TGT (
 	SEQNOS INT PRIMARY KEY,
     EmpNo INT,
     FirstName VARCHAR(50),
@@ -50,35 +51,4 @@ CREATE TABLE gudiseva.dbo.SCNR_5_TGT_1 (
     DeptNo INT
 );
 
-CREATE TABLE gudiseva.dbo.SCNR_5_TGT_2 (
-	SEQNOS INT PRIMARY KEY,
-    EmpNo INT,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    DateOfBirth DATE,
-    Gender VARCHAR(10),
-    DepartmentID INT,
-    Salary DECIMAL(10, 2),
-    HireDate DATE,
-    DeptNo INT
-);
-
-CREATE TABLE gudiseva.dbo.SCNR_5_TGT_3 (
-	SEQNOS INT PRIMARY KEY,
-    EmpNo INT,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    DateOfBirth DATE,
-    Gender VARCHAR(10),
-    DepartmentID INT,
-    Salary DECIMAL(10, 2),
-    HireDate DATE,
-    DeptNo INT
-);
-
-SELECT * FROM gudiseva.dbo.SCNR_5_TGT_1;
-
-SELECT * FROM gudiseva.dbo.SCNR_5_TGT_2;
-
-SELECT * FROM gudiseva.dbo.SCNR_5_TGT_3;
-
+SELECT * FROM gudiseva.dbo.SCNR_52_TGT;
